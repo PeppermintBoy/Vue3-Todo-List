@@ -2,13 +2,16 @@
 	<img alt="Vue logo" src="./assets/logo.png" />
 	<button @click="toggleModal">Add new task</button>
 	<teleport to=".modals" v-if="modalShown">
-		<Modal @submittedInput="submittedInput = $event" />
+		<Modal
+			@submittedInput="
+				(submittedInput = $event), toggleModal(), pushToTodoList()
+			"
+		/>
 	</teleport>
 	<div>
 		<h1>Yoyo's Todo List</h1>
-		<p>{{ submittedInput }}</p>
 
-		<Forms />
+		<Forms :todoList="todoList" />
 	</div>
 </template>
 
@@ -25,11 +28,15 @@ export default {
 		return {
 			modalShown: false,
 			submittedInput: '',
+			todoList: [],
 		};
 	},
 	methods: {
 		toggleModal() {
 			this.modalShown = !this.modalShown;
+		},
+		pushToTodoList() {
+			this.todoList.push(this.submittedInput);
 		},
 	},
 };

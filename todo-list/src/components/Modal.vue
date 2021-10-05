@@ -13,14 +13,21 @@ export default {
 	data() {
 		return {
 			tempInput: '',
-			submittedInput: '',
+			submittedInput: {
+				done: false,
+				name: '',
+			},
 		};
 	},
 	methods: {
 		submitInput() {
-			this.submittedInput = this.tempInput;
+			this.submittedInput.name = this.tempInput;
+
 			this.$emit('submittedInput', this.submittedInput);
 		},
+	},
+	mounted() {
+		document.getElementById('input').focus();
 	},
 };
 </script>
