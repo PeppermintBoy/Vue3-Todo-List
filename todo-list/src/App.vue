@@ -2,10 +2,11 @@
 	<img alt="Vue logo" src="./assets/logo.png" />
 	<button @click="toggleModal">Add new task</button>
 	<teleport to=".modals" v-if="modalShown">
-		<Modal />
+		<Modal @submittedInput="submittedInput = $event" />
 	</teleport>
 	<div>
 		<h1>Yoyo's Todo List</h1>
+		<p>{{ submittedInput }}</p>
 
 		<Forms />
 	</div>
@@ -23,6 +24,7 @@ export default {
 	data() {
 		return {
 			modalShown: false,
+			submittedInput: '',
 		};
 	},
 	methods: {
