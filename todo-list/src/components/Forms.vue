@@ -1,5 +1,6 @@
 <template>
-	<div v-for="todo in todoList" :key="todo.name">
+	<button @click="toggleAllDone(todoList)">All done</button>
+	<div class="todo" v-for="todo in todoList" :key="todo.name">
 		<input
 			type="checkbox"
 			@click="todo.done = !todo.done"
@@ -22,11 +23,25 @@ export default {
 			// when you pass in an object as props, use ... to show the data
 			// console.log(...this.todoList);
 
-			for (let i = 0; i < todoList.length; i++) {
-				if (todoList[i].name == todo.name) {
-					return this.$emit('deleteTask', i);
-				}
-			}
+			//My way
+			// for (let i = 0; i < todoList.length; i++) {
+			// 	if (todoList[i].name == todo.name) {
+			// 		return this.$emit('deleteTask', i);
+			// 	}
+			// }
+
+			//Youtuber's way
+			const todoIndex = todoList.indexOf(todo);
+			return this.$emit('deleteTask', todoIndex);
+		},
+		toggleAllDone(todoList) {
+			//My way
+			// for (let i = 0; i < todoList.length; i++) {
+			// 	todoList[i].done = true;
+			// }
+
+			//youtuber's way
+			todoList.forEach(todo => (todo.done = true));
 		},
 	},
 };
@@ -41,7 +56,7 @@ p {
 	text-decoration: line-through;
 }
 
-button {
+.todo button {
 	color: white;
 	background-color: red;
 	border-style: none;
@@ -49,7 +64,7 @@ button {
 	border-radius: 10px;
 }
 
-button:hover {
+.todo button:hover {
 	background-color: rgba(78, 3, 163, 0.466);
 }
 </style>
