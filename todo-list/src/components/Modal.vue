@@ -19,6 +19,7 @@ export default {
 			},
 		};
 	},
+	emits: ['submittedInput', 'closeModal'],
 	methods: {
 		submitInput() {
 			this.submittedInput.name = this.tempInput;

@@ -16,6 +16,7 @@ export default {
 	data() {
 		return {};
 	},
+	emits: ['deleteTask'],
 	methods: {
 		deleteTask(todo, todoList) {
 			// when you pass in an object as props, use ... to show the data
