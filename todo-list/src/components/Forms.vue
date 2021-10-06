@@ -1,5 +1,11 @@
 <template>
-	<button @click="toggleAllDone(todoList)">All done</button>
+	<button
+		v-show="todoList.length"
+		class="all-done"
+		@click="toggleAllDone(todoList)"
+	>
+		All done
+	</button>
 	<div class="todo" v-for="todo in todoList" :key="todo.name">
 		<input
 			type="checkbox"
@@ -56,6 +62,10 @@ p {
 	text-decoration: line-through;
 }
 
+.todo {
+	font-size: 20px;
+}
+
 .todo button {
 	color: white;
 	background-color: red;
@@ -66,5 +76,15 @@ p {
 
 .todo button:hover {
 	background-color: rgba(78, 3, 163, 0.466);
+}
+
+.all-done {
+	background-color: rgb(28, 185, 7);
+	color: rgb(244, 248, 0);
+	border-radius: 10px;
+	border-style: none;
+	margin-top: 30px;
+	font-size: 20px;
+	font-family: 'Indie Flower', cursive;
 }
 </style>

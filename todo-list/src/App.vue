@@ -2,7 +2,7 @@
 	<img id="yoyo-logo" alt="yoyo's logo" src="./assets/Nathan.jpeg" />
 	<br />
 	<h1>Yoyo's Todo List</h1>
-	<button @click="toggleModal">Add new task</button>
+	<button class="modal-button" @click="toggleModal">Add new task</button>
 	<div to=".modals" v-if="modalShown">
 		<Modal
 			@submittedInput="
@@ -11,6 +11,7 @@
 			@closeModal="toggleModal()"
 		/>
 	</div>
+
 	<div>
 		<Forms :todo-list="todoList" @delete-task="deleteTask($event)" />
 	</div>
@@ -49,6 +50,7 @@ export default {
 <style>
 body {
 	text-align: center;
+	font-family: 'Indie Flower', cursive;
 }
 #yoyo-logo {
 	margin: 0 auto;
@@ -56,5 +58,13 @@ body {
 	height: 100px;
 	text-align: center;
 	border-radius: 50%;
+}
+
+.modal-button {
+	border-radius: 10px;
+	border-style: none;
+	font-size: 20px;
+	padding: 5px;
+	font-family: 'Indie Flower', cursive;
 }
 </style>

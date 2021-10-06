@@ -52,6 +52,10 @@ export default {
 	background: white;
 	border-radius: 10px;
 }
+
+.modal input {
+	font-family: 'Indie Flower', cursive;
+}
 #input {
 	border-radius: 10px;
 	width: 60%;
